@@ -18,3 +18,16 @@ class Prodotto
     $this->immagine = $immagine;
   }
 }
+
+//Classe per categoria
+class Categoria
+{
+  public $nome;
+  public $icona;
+  //construttore per la categoria
+  public function __construct($nome, $icona)
+  {
+    $this->nome = $nome;
+    $this->icona = $icona;
+  }
+}
