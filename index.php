@@ -31,3 +31,18 @@ class Categoria
     $this->icona = $icona;
   }
 }
+
+//Classe per articolo
+class Articolo
+{
+  public $tipo;
+  public $categoria;
+  public $prodotto;
+  //construttore per articolo
+  public function __construct($tipo, $categoria, $prodotto)
+  {
+    $this->tipo = $tipo;
+    $this->categoria = $categoria;
+    $this->prodotto = $prodotto;
+  }
+}
