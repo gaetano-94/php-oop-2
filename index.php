@@ -5,11 +5,11 @@ require_once __DIR__ . '/Models/Product.php';
 require_once __DIR__ . '/Models/Food.php';
 require_once __DIR__ . '/Models/Game.php';
 
-$cani = new Category('Cani', 'Icona');
-$gatti = new Category('Gatti', 'Icona');
+$cani = new Category('Cani', '<i class="fa-solid fa-dog"></i>');
+$gatti = new Category('Gatti', '<i class="fa-solid fa-cat"></i>');
 
 // prodotto di default
-$product = new Product(120, 'Prodotto di Prova', $cani);
+$product_default = new Product(120, 'Prodotto di Prova', $cani);
 
 // prodotto food
 $cibo_cane = new Food(200, 'Cibo cane', $cani, 'carne, verdura, pollo');
@@ -20,7 +20,7 @@ $palla_gatto = new Game(130, 'Palla blu', $gatti);
 $palla_gatto->set_material('gomma');
 
 $products = [
-  $product,
+  $product_default,
   $cibo_cane,
   $palla_gatto
 ];
@@ -54,19 +54,24 @@ $products = [
   <h1 class="text-center py-3 text-uppercase text-warning"><strong>Pet Shop</strong></h1>
   <div class="container bg-success rounded">
     <div class="row">
-      <!-- Colonna Prodotto -->
-      <div class="col-3 py-3">
-        <!-- Card Prodotto -->
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+      <?php foreach ($products as $product) : ?>
+        <!-- Colonna Prodotto -->
+        <div class="col-4 py-3">
+          <!-- Card Prodotto -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"> <strong><?php echo $product->get_name(); ?></strong> </h5>
+              <div>
+                <p><strong>Categoria:</strong> <?php echo $product->get_category()->get_name(); ?> <?php echo $product->get_category()->get_icon(); ?></p>
+                <p><strong>Tipo:</strong> <?php echo Product::$type; ?></p>
+              </div>
+              <a href="#" class="btn btn-primary">Acquista</a>
+            </div>
           </div>
+          <!-- /Card Prodotto -->
         </div>
-        <!-- /Card Prodotto -->
-      </div>
-      <!-- /Colonna Prodotto -->
+        <!-- /Colonna Prodotto -->
+      <?php endforeach; ?>
     </div>
   </div>
 </body>

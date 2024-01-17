@@ -12,6 +12,7 @@ class Product
   private $price;
   private $image;
   private $is_available;
+  public static $type = 'Default';
 
   //construttore per i prodotti 
   public function __construct($_id, $_name, Category $_category)
@@ -79,5 +80,11 @@ class Product
   public function set_is_available($_is_available)
   {
     $this->is_available = $_is_available;
+  }
+
+
+  public function get_product_type()
+  {
+    return get_class();
   }
 }
