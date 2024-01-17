@@ -1,87 +1,34 @@
 <?php
 
-//Classe per il prodotto 
-class Product
-{
-  private $id;
-  private $name;
-  private $description;
-  private $category;
-  private $price;
-  private $image;
-  private $is_available;
+require_once __DIR__ . '/Models/Category.php';
+require_once __DIR__ . '/Models/Product.php';
+require_once __DIR__ . '/Models/Food.php';
+require_once __DIR__ . '/Models/Game.php';
 
-  //construttore per i prodotti 
-  public function __construct($_id, $_name, $_category)
-  {
-    $this->set_id($_id);
-    $this->set_name($_name);
-    $this->set_category($_category);
-  }
+$cani = new Category('Cani', 'Icona');
+$gatti = new Category('Gatti', 'Icona');
 
-  //GETTERS
-  public function get_id()
-  {
-    return $this->id;
-  }
-  public function get_name()
-  {
-    return $this->name;
-  }
-  public function get_description()
-  {
-    return $this->description;
-  }
-  public function get_category()
-  {
-    return $this->category;
-  }
-  public function get_price()
-  {
-    return $this->price;
-  }
-  public function get_image()
-  {
-    return $this->image;
-  }
-  public function get_is_available()
-  {
-    return $this->is_available;
-  }
+// prodotto di default
+$product = new Product(120, 'Prodotto di Prova', $cani);
 
-  //SETTERS
-  public function set_id($_id)
-  {
-    $this->id = $_id;
-  }
-  public function set_name($_name)
-  {
-    $this->name = $_name;
-  }
-  public function set_description($_description)
-  {
-    $this->description = $_description;
-  }
-  public function set_category($_category)
-  {
-    $this->category = $_category;
-  }
-  public function set_price($_price)
-  {
-    $this->price = $_price;
-  }
-  public function set_image($_image)
-  {
-    $this->image = $_image;
-  }
-  public function set_is_available($_is_available)
-  {
-    $this->is_available = $_is_available;
-  }
-}
+// prodotto food
+$cibo_cane = new Food(200, 'Cibo cane', $cani, 'carne, verdura, pollo');
+//$cibo_cane->set_ingredients('carne, verdura, pollo');
 
-//Instanziare prodotto
-$product = new Product(120, 'Prodotto di Prova', 'Cani');
+// prodotto game
+$palla_gatto = new Game(130, 'Palla blu', $gatti);
+$palla_gatto->set_material('gomma');
+
+$products = [
+  $product,
+  $cibo_cane,
+  $palla_gatto
+];
+
+// echo "<pre>";
+// var_dump($products);
+// echo "</pre>";
+
 ?>
 
 
@@ -92,17 +39,23 @@ $product = new Product(120, 'Prodotto di Prova', 'Cani');
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Php Shop</title>
+
   <!-- BOOTSTRAP -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <!-- /BOOTSTRAP -->
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- /Font Awesome -->
+
 </head>
 
-<body>
-  <h1 class="text-center py-3">Pet Shop</h1>
-  <div class="container">
+<body class="bg-primary">
+  <h1 class="text-center py-3 text-uppercase text-warning"><strong>Pet Shop</strong></h1>
+  <div class="container bg-success rounded">
     <div class="row">
       <!-- Colonna Prodotto -->
-      <div class="col-3">
+      <div class="col-3 py-3">
         <!-- Card Prodotto -->
         <div class="card" style="width: 18rem;">
           <div class="card-body">
