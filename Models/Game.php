@@ -7,7 +7,7 @@ class Game extends Product
   private $material;
   private $age;
   private $size;
-  public static $type = 'Game';
+  public  $type = 'Game';
 
 
   public function set_material($_material)

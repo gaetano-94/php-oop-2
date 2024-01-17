@@ -63,7 +63,7 @@ $products = [
               <h5 class="card-title"> <strong><?php echo $product->get_name(); ?></strong> </h5>
               <div>
                 <p><strong>Categoria:</strong> <?php echo $product->get_category()->get_name(); ?> <?php echo $product->get_category()->get_icon(); ?></p>
-                <p><strong>Tipo:</strong> <?php echo Product::$type; ?></p>
+                <p><strong>Tipo:</strong> <?php echo $product->type; ?></p>
               </div>
               <a href="#" class="btn btn-primary">Acquista</a>
             </div>

@@ -12,7 +12,7 @@ class Product
   private $price;
   private $image;
   private $is_available;
-  public static $type = 'Default';
+  public  $type = 'Default';
 
   //construttore per i prodotti 
   public function __construct($_id, $_name, Category $_category)

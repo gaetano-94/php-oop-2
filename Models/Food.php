@@ -9,7 +9,7 @@ class Food extends Product
   private $expiration_date;
   private $is_gluten_free;
   private $is_vegan;
-  public static $type = 'Food';
+  public  $type = 'Food';
 
   public function __construct($_id, $_name, Category $_category, $ingredients)
   {
